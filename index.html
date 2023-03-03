@@ -83,14 +83,14 @@
           <input
             type="radio"
             name="recuentosOption"
-            value="<500 UFC/ml"
+            value=">500"
             id="option-1-2"
           />
-          <label for="option-1-2"><500 UFC/ml</label>
+          <label for="option-1-2">>500 UFC/ml</label>
           <input
             type="radio"
             name="recuentosOption"
-            value="<10 UFC/ml"
+            value="<10"
             id="option-1-3"
           />
           <label for="option-1-3"><10 UFC/ml</label>
@@ -190,14 +190,14 @@
           <input
             type="radio"
             name="escherichiaOption"
-            value="presencia"
+            value="Presencia"
             id="option-4-1"
           />
           <label for="option-4-1">Presencia</label>
           <input
             type="radio"
             name="escherichiaOption"
-            value="ausencia"
+            value="Ausencia"
             id="option-4-2"
           />
           <label for="option-4-2">Ausencia/No se detecta</label>
@@ -207,14 +207,14 @@
           <input
             type="radio"
             name="pseudomonaOption"
-            value="presencia"
+            value="Presencia"
             id="option-5-1"
           />
           <label for="option-5-1">Presencia</label>
           <input
             type="radio"
             name="pseudomonaOption"
-            value="ausencia"
+            value="Ausencia"
             id="option-5-2"
           />
           <label for="option-5-2">Ausencia/No se detecta</label>
@@ -228,14 +228,56 @@
     </form>
 
     <!-- Informe -->
-    <div id="informe" class="informe">
-      <section>
+    <div id="informe" class="informe hidden">
+      <section class="informeEncabezado">
         <img src="" alt="" />
         <div id="informeNumeracion"></div>
       </section>
-      <h3>Análisis microbiológicos de Agua</h3>
-      <section>
+      <section class="informeRemitente">
+        <h3>Análisis microbiológicos de Agua</h3>
         <div id="datosRemitente"></div>
+      </section>
+      <section class="informeTexto">
+        <p>
+          Se realizaron determinaciones de rutina según Art. 982 del Código
+          Alimentario Argentino, desarrolladas en Laboratorio Horizonte (Las
+          Heras 615 - Tandil).
+        </p>
+        <span>Metodología empleada: </span>
+        <span>
+          Recuento de microorganismos aerobios en placa. Recuento de coliformes
+          totales, coliformes fecales y Escherichia coli, método NMP por tubos
+          múltiples. Detección de Pseudomona aeruginosa: Estandar Methods for
+          the Examination of Water y Wasterwater 21st Edition (2005).
+        </span>
+      </section>
+      <section class="informeResultados">
+        <h4>Resultados de los análisis</h4>
+        <div id="informeResultados"></div>
+      </section>
+      <section class="informeConclusion"></section>
+      <section class="informePie">
+        <p>
+          NOTA: El laboratorio procesa la muestra remitida pero no se hace
+          responsable de su identificación. La muestra fue tomada por persona
+          exenta al laboratorio.
+        </p>
+        <div>
+          <div>
+            <p>Tandil,</p>
+          </div>
+          <div>
+            <img src="" alt="" />
+            <p>Microbiología de Agua y Análisis de Alimentos</p>
+            <p>Laboratorio Horizonte</p>
+            <p>Las Heras 615 - Tandil</p>
+            <p>Tel. 249-4560651</p>
+          </div>
+        </div>
+        <p>
+          Laboratorio bromatológico habilitado por el Ministerio de Salud de la
+          Provincia de Buenos Aires, habilitación n° 2900-44730.
+        </p>
       </section>
     </div>
     <script src="script.js"></script>
