@@ -58,11 +58,14 @@
         <input type="text" name="direccionRemitente" id="direccionRemitente" />
 
         <div class="form-dates">
-          <label for="fechaRecepcion">Fecha de recepción</label>
-          <input type="date" name="fechaRecepcion" id="fechaRecepcion" />
-
-          <label for="fechaInicio">Fecha de inicio</label>
-          <input type="date" name="fechaInicio" id="fechaInicio" />
+          <div>
+            <label for="fechaRecepcion">Fecha de recepción</label>
+            <input type="date" name="fechaRecepcion" id="fechaRecepcion" />
+          </div>
+          <div>
+            <label for="fechaInicio">Fecha de inicio</label>
+            <input type="date" name="fechaInicio" id="fechaInicio" />
+          </div>
         </div>
 
         <label for="detalleMuestra">Detalle de muestra</label>
@@ -72,7 +75,7 @@
       <div class="form-resultados">
         <h2>Datos de la muestra</h2>
         <div class="form-resultados-item">
-          <label for="recuentosOption">Recuento de Aerobias Mesófilas</label>
+          <p for="recuentosOption">Recuento de Aerobias Mesófilas</p>
           <input
             type="number"
             name="recuentosOption"
@@ -83,27 +86,27 @@
           <input
             type="radio"
             name="recuentosOption"
-            value=">500"
+            value="> 500"
             id="option-1-2"
           />
-          <label for="option-1-2">>500 UFC/ml</label>
+          <label for="option-1-2">> 500 UFC/ml</label>
           <input
             type="radio"
             name="recuentosOption"
-            value="<10"
+            value="< 10"
             id="option-1-3"
           />
-          <label for="option-1-3"><10 UFC/ml</label>
+          <label for="option-1-3">< 10 UFC/ml</label>
         </div>
         <div class="form-resultados-item">
-          <label for="bacteriasOption">NMP Bacterias Coliformes</label>
+          <p for="bacteriasOption">NMP Bacterias Coliformes</p>
           <input
             type="radio"
             name="bacteriasOption"
-            value="<1.1"
+            value="< 1.1"
             id="option-2-1"
           />
-          <label for="option-2-1"><1.1</label>
+          <label for="option-2-1">< 1.1</label>
           <input
             type="radio"
             name="bacteriasOption"
@@ -128,27 +131,27 @@
           <input
             type="radio"
             name="bacteriasOption"
-            value="8.0"
+            value="8"
             id="option-2-5"
           />
-          <label for="option-2-5">8.0</label>
+          <label for="option-2-5">8</label>
           <input
             type="radio"
             name="bacteriasOption"
-            value=">8.0"
+            value="> 8"
             id="option-2-6"
           />
-          <label for="option-2-6">>8.0</label>
+          <label for="option-2-6">> 8</label>
         </div>
         <div class="form-resultados-item">
-          <label for="coliformesOption">NMP Coliformes Termotolerantes</label>
+          <p for="coliformesOption">NMP Coliformes Termotolerantes</p>
           <input
             type="radio"
             name="coliformesOption"
-            value="<1.1"
+            value="< 1.1"
             id="option-3-1"
           />
-          <label for="option-3-1"><1.1</label>
+          <label for="option-3-1">< 1.1</label>
           <input
             type="radio"
             name="coliformesOption"
@@ -173,20 +176,20 @@
           <input
             type="radio"
             name="coliformesOption"
-            value="8.0"
+            value="8"
             id="option-3-5"
           />
-          <label for="option-3-5">8.0</label>
+          <label for="option-3-5">8</label>
           <input
             type="radio"
             name="coliformesOption"
-            value=">8.0"
+            value="> 8"
             id="option-3-6"
           />
-          <label for="option-3-6">>8.0</label>
+          <label for="option-3-6">> 8</label>
         </div>
         <div class="form-resultados-item">
-          <label for="escherichiaOption">Escherichia Coli</label>
+          <p for="escherichiaOption">Escherichia Coli</p>
           <input
             type="radio"
             name="escherichiaOption"
@@ -203,7 +206,7 @@
           <label for="option-4-2">Ausencia/No se detecta</label>
         </div>
         <div class="form-resultados-item">
-          <label for="pseudomonaOption">Pseudomona Aeruginosa</label>
+          <p for="pseudomonaOption">Pseudomona Aeruginosa</p>
           <input
             type="radio"
             name="pseudomonaOption"
@@ -230,7 +233,7 @@
     <!-- Informe -->
     <div id="informe" class="informe hidden">
       <section class="informeEncabezado">
-        <img src="" alt="" />
+        <img src="./images/logos/logohorizonte.jpg" alt="logo-horizonte" />
         <div id="informeNumeracion"></div>
       </section>
       <section class="informeRemitente">
@@ -262,7 +265,7 @@
           responsable de su identificación. La muestra fue tomada por persona
           exenta al laboratorio.
         </p>
-        <div>
+        <div class="informePieFirma">
           <div>
             <p>Tandil,</p>
           </div>
@@ -274,12 +277,15 @@
             <p>Tel. 249-4560651</p>
           </div>
         </div>
-        <p>
+        <p class="informePieLaboratorio cursiva">
           Laboratorio bromatológico habilitado por el Ministerio de Salud de la
           Provincia de Buenos Aires, habilitación n° 2900-44730.
         </p>
       </section>
     </div>
+    <script src="
+https://cdn.jsdelivr.net/npm/dayjs@1.11.7/dayjs.min.js
+"></script>
     <script src="script.js"></script>
   </body>
 </html>

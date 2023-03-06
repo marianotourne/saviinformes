@@ -121,6 +121,14 @@ form .form-remitente textarea {
   padding: 6px;
 }
 
+form .form-remitente .form-dates {
+  display: flex;
+}
+
+form .form-remitente .form-dates div:last-child {
+  margin-left: 10px;
+}
+
 form .form-resultados {
   margin-top: 20px;
   font-size: var(--font-md);
@@ -130,22 +138,60 @@ form .form-resultados div {
   border-bottom: 1px solid #808080;
   padding: 12px 0;
 }
+
+form .form-resultados div p {
+  font-weight: bold;
+  padding-bottom: 14px;
+  font-size: var(--font-md);
+}
+
 form .form-resultados div label {
   margin-right: 12px;
-  font-weight: bold;
 }
 form .form-resultados div input {
   padding: 6px;
-  margin: 0 6px 0 18px;
 }
-/* form .form-resultados .form-resultados-item * {
-} */
+
+form .form-resultados div input[type="number"] {
+  width: 60px;
+}
+
+form .form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.btn-send {
+  background-color: #1b8654;
+  color: white;
+  font-size: var(--font-lg);
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 4px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Informe */
 .informe {
   width: 1000px;
+  /* width: 2480px;
+  height: 3508px; */
   margin: 0 auto;
   font-size: var(--font-lg);
+}
+
+.informe .informeEncabezado {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  margin-bottom: 20px;
+}
+
+.informe .informeEncabezado img {
+  width: 200px;
 }
 
 .informeRemitente #datosRemitente {
@@ -222,6 +268,12 @@ form .form-resultados div input {
   width: 80%;
   margin: 0 auto;
   font-size: var(--font-md);
+}
+
+.informePie .informePieFirma {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
 }
 
 /* Media Queries */

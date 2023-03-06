@@ -50,8 +50,8 @@ function enviarEncabezado() {
   nroPropio = numeroPropio.valueAsNumber;
   nomRemitente = nombreRemitente.value;
   dirRemitente = direccionRemitente.value;
-  recepcion = fechaRecepcion.value;
-  inicio = fechaInicio.value;
+  recepcion = dayjs(fechaRecepcion.value).format("DD/MM/YYYY");
+  inicio = dayjs(fechaInicio.value).format("DD/MM/YYYY");
   detalle = detalleMuestra.value;
   imprimirEncabezado(
     nroLab,
@@ -63,6 +63,7 @@ function enviarEncabezado() {
     detalle
   );
 }
+
 function enviarResultados() {
   let recuentos = getRecuentosOption();
   let bacteriasColiformes = getBacteriasColiformesOption();
@@ -71,30 +72,40 @@ function enviarResultados() {
   let pseudomona = getPseudomonaOption();
 
   let leyendaRecuentos = "";
-  if (recuentos == ">500") {
+  let subrayarRecuentos = false;
+  if (recuentos == "> 500") {
     leyendaRecuentos = "Calidad Deficiente";
-  } else if (recuentos == "<10") {
+    subrayarRecuentos = true;
+  } else if (recuentos == "< 10") {
     leyendaRecuentos = "Calidad Aceptable";
   }
 
   let leyendaBacteriasColiformes = "Presencia";
-  if (bacteriasColiformes == "<1.1") {
+  let subrayarBacterias = true;
+  if (bacteriasColiformes == "< 1.1") {
     leyendaBacteriasColiformes = "Ausencia / No se detecta";
+    subrayarBacterias = false;
   }
 
   let leyendaColiformesTermotolerantes = "Presencia";
-  if (coliformesTermotolerantes == "<1.1") {
+  let subrayarColiformes = true;
+  if (coliformesTermotolerantes == "< 1.1") {
     leyendaColiformesTermotolerantes = "Ausencia / No se detecta";
+    subrayarColiformes = false;
   }
 
   let leyendaEscherichiaColi = "Presencia";
+  let subrayarEscherichia = true;
   if (escherichiaColi == "Ausencia") {
     leyendaEscherichiaColi = "Ausencia / No se detecta";
+    subrayarEscherichia = false;
   }
 
   let leyendaPseudomona = "Presencia";
+  let subrayarPseudomona = true;
   if (pseudomona == "Ausencia") {
     leyendaPseudomona = "Ausencia / No se detecta";
+    subrayarPseudomona = false;
   }
 
   imprimirResultados(
@@ -108,6 +119,13 @@ function enviarResultados() {
     leyendaColiformesTermotolerantes,
     leyendaEscherichiaColi,
     leyendaPseudomona
+  );
+  subrayarDeficientes(
+    subrayarRecuentos,
+    subrayarBacterias,
+    subrayarColiformes,
+    subrayarEscherichia,
+    subrayarPseudomona
   );
 }
 
@@ -129,7 +147,7 @@ function imprimirEncabezado(
       <p>${nombre}</p>
     </div>
     <div>
-      <p>Direccion</p>
+      <p>Dirección</p>
       <p>${direccion}</p>
     </div>
     <div>
@@ -164,41 +182,63 @@ function imprimirResultados(
 ) {
   informeResultados.innerHTML = `
     <div>
-      <p>Recuento de aerobias mesófilas</p>
+      <p id="tituloRecuentos">Recuento de aerobias mesófilas</p>
       <p>${leyendaRecuentos}</p>
       <p>${recuentos} UFC/ml</p>
     </div>
     <div>
-      <p>NPM Bacterias coliformes</p>
+      <p id="tituloBacteriasColiformes">NPM Bacterias coliformes</p>
       <p>${leyendaBacteriasColiformes}</p>
       <p>${bacteriasColiformes} NMP/100ml</p>
     </div>
     <div>
-      <p>NPM Coliformes termotolerantes</p>
+      <p id="tituloColiformesTermotolerantes">NPM Coliformes termotolerantes</p>
       <p>${leyendaColiformesTermotolerantes}</p>
       <p>${coliformesTermotolerantes} NMP/100ml</p>
     </div>
     <div>
-      <p class="cursiva">Escherichia Coli</p>
+      <p class="cursiva" id="tituloEscherichia">Escherichia Coli</p>
       <p>${leyendaEscherichiaColi}</p>
       <p>${escherichiaColi}/100ml</p>
     </div>
     <div>
-      <p class="cursiva">Pseudomona aeruginosa</p>
+      <p class="cursiva" id="tituloPseudomona">Pseudomona aeruginosa</p>
       <p>${leyendaPseudomona}</p>
       <p>${pseudomona}/100ml</p>
     </div>
   `;
 }
 
-function getRecuentosOption() {
-  if (recuentosOption.find((item) => item.checked) === undefined) {
-    itemSelected = option11.value;
-  } else {
-    itemSelected = recuentosOption.find((item) => item.checked).value;
+function subrayarDeficientes(
+  recuentos,
+  bacterias,
+  coliformes,
+  escherichia,
+  pseudomona
+) {
+  if (recuentos) {
+    document.getElementById("tituloRecuentos").style.textDecoration =
+      "underline";
   }
-  return itemSelected;
+  if (bacterias) {
+    document.getElementById("tituloBacteriasColiformes").style.textDecoration =
+      "underline";
+  }
+  if (coliformes) {
+    document.getElementById(
+      "tituloColiformesTermotolerantes"
+    ).style.textDecoration = "underline";
+  }
+  if (escherichia) {
+    document.getElementById("tituloEscherichia").style.textDecoration =
+      "underline";
+  }
+  if (pseudomona) {
+    document.getElementById("tituloPseudomona").style.textDecoration =
+      "underline";
+  }
 }
+
 function getRecuentosOption() {
   if (recuentosOption.find((item) => item.checked) === undefined) {
     itemSelected = option11.value;
