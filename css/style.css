@@ -39,6 +39,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-width: 360px;
 }
 
 .navbar .navbar-item {
@@ -129,7 +130,8 @@ form .form-remitente .form-dates div:last-child {
   margin-left: 10px;
 }
 
-form .form-resultados {
+form .form-resultados,
+form .form-conclusiones {
   margin-top: 20px;
   font-size: var(--font-md);
 }
@@ -145,17 +147,21 @@ form .form-resultados div p {
   font-size: var(--font-md);
 }
 
-form .form-resultados div label {
+form .form-resultados div label,
+form .form-conclusiones div label {
   margin-right: 12px;
 }
-form .form-resultados div input {
+form .form-resultados div input,
+form .form-conclusiones div input {
   padding: 6px;
 }
 
 form .form-resultados div input[type="number"] {
   width: 60px;
 }
-
+form .form-conclusiones div {
+  padding: 14px 0;
+}
 form .form-buttons {
   display: flex;
   justify-content: flex-end;
@@ -180,7 +186,7 @@ form .form-buttons {
   /* width: 2480px;
   height: 3508px; */
   margin: 0 auto;
-  font-size: var(--font-lg);
+  font-size: var(--font-md);
 }
 
 .informe .informeEncabezado {
@@ -199,6 +205,7 @@ form .form-buttons {
   flex-direction: column;
   width: 500px;
   margin: 50px auto;
+  border: 1px solid black;
 }
 .informeRemitente #datosRemitente div {
   display: flex;
@@ -242,6 +249,7 @@ form .form-buttons {
   display: flex;
   flex-direction: column;
   margin: 20px auto;
+  border: 1px solid black;
 }
 .informeResultados #informeResultados div {
   display: flex;
@@ -251,7 +259,7 @@ form .form-buttons {
   align-self: self-start;
 }
 .informeResultados #informeResultados div p:first-child {
-  width: 330px;
+  width: 320px;
 }
 .informeResultados #informeResultados div p:nth-child(2) {
   width: 280px;
@@ -273,9 +281,65 @@ form .form-buttons {
 .informePie .informePieFirma {
   display: flex;
   justify-content: space-between;
-  margin: 50px 0;
+  margin: 30px 0;
 }
 
+.informeConclusion {
+  width: 80%;
+  margin: 40px auto;
+}
+#impresionConclusion {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-areas:
+    "r1c1 r1c2 r1c3"
+    "r2c1 r2c2 r2c3";
+  border: 1px solid black;
+  font-size: var(--font-md);
+  margin-bottom: 20px;
+}
+
+.item {
+  width: 100%;
+  height: 100px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+}
+
+.item .cursiva span {
+  font-style: normal;
+}
+.itemr1 {
+  height: 50px;
+  font-weight: bold;
+}
+
+.r1c1 {
+  grid-area: r1c1;
+}
+.r1c2 {
+  grid-area: r1c2;
+}
+.r1c3 {
+  grid-area: r1c3;
+}
+.r2c1 {
+  grid-area: r2c1;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.r2c2 {
+  grid-area: r2c2;
+  align-items: flex-start;
+}
+.r2c3 {
+  grid-area: r2c3;
+}
 /* Media Queries */
 @media screen and (max-width: 767px) {
   .navbar-brand img {

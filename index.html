@@ -103,17 +103,17 @@
           <input
             type="radio"
             name="bacteriasOption"
-            value="< 1.1"
+            value="< 1,1"
             id="option-2-1"
           />
-          <label for="option-2-1">< 1.1</label>
+          <label for="option-2-1">< 1,1</label>
           <input
             type="radio"
             name="bacteriasOption"
-            value="1.1"
+            value="1,1"
             id="option-2-2"
           />
-          <label for="option-2-2">1.1</label>
+          <label for="option-2-2">1,1</label>
           <input
             type="radio"
             name="bacteriasOption"
@@ -148,17 +148,17 @@
           <input
             type="radio"
             name="coliformesOption"
-            value="< 1.1"
+            value="< 1,1"
             id="option-3-1"
           />
-          <label for="option-3-1">< 1.1</label>
+          <label for="option-3-1">< 1,1</label>
           <input
             type="radio"
             name="coliformesOption"
-            value="1.1"
+            value="1,1"
             id="option-3-2"
           />
-          <label for="option-3-2">1.1</label>
+          <label for="option-3-2">1,1</label>
           <input
             type="radio"
             name="coliformesOption"
@@ -224,6 +224,37 @@
         </div>
       </div>
 
+      <div class="form-conclusiones">
+        <h2>Conclusiones</h2>
+        <div class="form-resultados-item">
+          <input
+            type="radio"
+            name="resultadoOption"
+            value="Deficiente"
+            id="optionDeficiente"
+          />
+          <label for="optionDeficiente">Deficiente</label>
+          <input
+            type="radio"
+            name="resultadoOption"
+            value="Potable"
+            id="optionPotable"
+          />
+          <label for="optionPotable">Potable</label>
+          <input
+            type="radio"
+            name="resultadoOption"
+            value="No potable"
+            id="optionNoPotable"
+          />
+          <label for="optionNoPotable">No potable</label>
+        </div>
+        <div>
+          <label for="fechaInforme">Fecha de informe</label>
+          <input type="date" name="fechaInforme" id="fechaInforme" />
+        </div>
+      </div>
+
       <div class="form-buttons">
         <!-- cambiar a type="submit" -->
         <button type="button" class="btn-send" id="btnEnviar">Enviar</button>
@@ -249,16 +280,19 @@
         <span>Metodología empleada: </span>
         <span>
           Recuento de microorganismos aerobios en placa. Recuento de coliformes
-          totales, coliformes fecales y Escherichia coli, método NMP por tubos
-          múltiples. Detección de Pseudomona aeruginosa: Estandar Methods for
-          the Examination of Water y Wasterwater 21st Edition (2005).
+          totales, coliformes fecales y <i>Escherichia coli</i>, método NMP por
+          tubos múltiples. Detección de <i>Pseudomona aeruginosa:</i> Estandar
+          Methods for the Examination of Water y Wasterwater 21st Edition
+          (2005).
         </span>
       </section>
       <section class="informeResultados">
         <h4>Resultados de los análisis</h4>
         <div id="informeResultados"></div>
       </section>
-      <section class="informeConclusion"></section>
+      <section class="informeConclusion">
+        <div id="impresionConclusion"></div>
+      </section>
       <section class="informePie">
         <p>
           NOTA: El laboratorio procesa la muestra remitida pero no se hace
@@ -266,11 +300,10 @@
           exenta al laboratorio.
         </p>
         <div class="informePieFirma">
+          <div id="fechaImpresionInforme"></div>
           <div>
-            <p>Tandil,</p>
-          </div>
-          <div>
-            <img src="" alt="" />
+            <img src="./images/logos/firma.png" alt="firma" />
+            <p>Lic. Savina López - Mat. Nº 10442</p>
             <p>Microbiología de Agua y Análisis de Alimentos</p>
             <p>Laboratorio Horizonte</p>
             <p>Las Heras 615 - Tandil</p>

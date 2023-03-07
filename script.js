@@ -12,7 +12,8 @@ const numeroPropio = document.getElementById("numeroPropio");
 const nombreRemitente = document.getElementById("nombreRemitente");
 const btnEnviar = document.getElementById("btnEnviar");
 const option11 = document.getElementById("option-1-1");
-
+const fechaImpresionInforme = document.getElementById("fechaImpresionInforme");
+const impresionConclusion = document.getElementById("impresionConclusion");
 const recuentosOption = Array.apply(
   null,
   document.getElementsByName("recuentosOption")
@@ -36,6 +37,11 @@ const escherichiaOption = Array.apply(
 const pseudomonaOption = Array.apply(
   null,
   document.getElementsByName("pseudomonaOption")
+);
+
+const resultadoOption = Array.apply(
+  null,
+  document.getElementsByName("resultadoOption")
 );
 
 agua.onclick = toggleOptions;
@@ -74,22 +80,22 @@ function enviarResultados() {
   let leyendaRecuentos = "";
   let subrayarRecuentos = false;
   if (recuentos == "> 500") {
-    leyendaRecuentos = "Calidad Deficiente";
+    leyendaRecuentos = "Calidad deficiente";
     subrayarRecuentos = true;
   } else if (recuentos == "< 10") {
-    leyendaRecuentos = "Calidad Aceptable";
+    leyendaRecuentos = "Calidad aceptable";
   }
 
   let leyendaBacteriasColiformes = "Presencia";
   let subrayarBacterias = true;
-  if (bacteriasColiformes == "< 1.1") {
+  if (bacteriasColiformes == "< 1,1") {
     leyendaBacteriasColiformes = "Ausencia / No se detecta";
     subrayarBacterias = false;
   }
 
   let leyendaColiformesTermotolerantes = "Presencia";
   let subrayarColiformes = true;
-  if (coliformesTermotolerantes == "< 1.1") {
+  if (coliformesTermotolerantes == "< 1,1") {
     leyendaColiformesTermotolerantes = "Ausencia / No se detecta";
     subrayarColiformes = false;
   }
@@ -127,6 +133,13 @@ function enviarResultados() {
     subrayarEscherichia,
     subrayarPseudomona
   );
+}
+
+function enviarConclusiones() {
+  let informe = dayjs(fechaInforme.value).format("DD/MM/YYYY");
+  imprimirFechaConclusiones(informe);
+  let resultado = getResultadoOption();
+  imprimirConclusiones(resultado);
 }
 
 function imprimirEncabezado(
@@ -197,7 +210,7 @@ function imprimirResultados(
       <p>${coliformesTermotolerantes} NMP/100ml</p>
     </div>
     <div>
-      <p class="cursiva" id="tituloEscherichia">Escherichia Coli</p>
+      <p class="cursiva" id="tituloEscherichia">Escherichia coli</p>
       <p>${leyendaEscherichiaColi}</p>
       <p>${escherichiaColi}/100ml</p>
     </div>
@@ -239,6 +252,47 @@ function subrayarDeficientes(
   }
 }
 
+function imprimirFechaConclusiones(fecha) {
+  fechaImpresionInforme.innerHTML = `
+  <p>Tandil, ${fecha}</p>
+  `;
+}
+
+function imprimirConclusiones(dato) {
+  if (dato == "Deficiente") {
+    impresionConclusion.innerHTML = `
+      <div class="r1c1 item itemr1">Conclusión</div>
+      <div class="r1c2 item itemr1">Resultados parámetros</div>
+      <div class="r1c3 item itemr1">Leyendas asociadas</div>
+      <div class="r2c1 item">Deficiente</div>
+      <div class="r2c2 item">Rec. de aerobias mesófilas > 500 UFC/ml. <br>El resto de los parámetros cumplen con el CAA (art. 982)</div>
+      <div class="r2c3 item">Observación: se recomienda higienizar las instalaciones y realizar un nuevo recuento. CAA (art. 982)</div>
+    `;
+  } else if (dato == "Potable") {
+    impresionConclusion.innerHTML = `
+      <div class="r1c1 item itemr1">Conclusión</div>
+      <div class="r1c2 item itemr1">Resultados parámetros</div>
+      <div class="r1c3 item itemr1">Leyendas asociadas</div>
+      <div class="r2c1 item">Potable</div>
+      <div class="r2c2 item">Cumplen con CAA (art. 982)</div>
+      <div class="r2c3 item">Observación: Los parámetros analizados cumplen con los límites especificados en el Código Alimentario Argentino (art. 982)</div>
+    `;
+  } else if (dato == "No potable") {
+    impresionConclusion.innerHTML = `
+      <div class="r1c1 item itemr1">Conclusión</div>
+      <div class="r1c2 item itemr1">Resultados parámetros</div>
+      <div class="r1c3 item itemr1">Leyendas asociadas</div>
+      <div class="r2c1 item">No Potable</div>
+      <div class="r2c2 item">
+        <p>Bacterias Coliformes: < 1,1 NMP en 100 ml</p>
+        <div class="cursiva">Escherichia coli: <span>ausencia en 100 ml<span></div>
+        <div class="cursiva">Pseudomona aeruginosa: <span>ausencia en 100 ml<span></div>
+      </div>
+      <div class="r2c3 item">Observación: el/los parámetros subrayados no cumplen con los límites establecidos en el Código Alimentario Argentino (art. 982)</div>
+    `;
+  }
+}
+
 function getRecuentosOption() {
   if (recuentosOption.find((item) => item.checked) === undefined) {
     itemSelected = option11.value;
@@ -268,7 +322,13 @@ function getPseudomonaOption() {
   return itemSelected.value;
 }
 
+function getResultadoOption() {
+  let itemSelected = resultadoOption.find((item) => item.checked);
+  return itemSelected.value;
+}
+
 function todos() {
   enviarEncabezado();
   enviarResultados();
+  enviarConclusiones();
 }
