@@ -280,11 +280,11 @@ function imprimirConclusiones(dato) {
   } else if (dato == "No potable") {
     impresionConclusion.innerHTML = `
       <div class="r1c1 item itemr1">Conclusión</div>
-      <div class="r1c2 item itemr1">Resultados parámetros</div>
+      <div class="r1c2 item itemr1">Parámetros de potabilidad</div>
       <div class="r1c3 item itemr1">Leyendas asociadas</div>
-      <div class="r2c1 item">No Potable</div>
+      <div class="r2c1 item">No potable</div>
       <div class="r2c2 item">
-        <p>Bacterias Coliformes: < 1,1 NMP en 100 ml</p>
+        <p>Bacterias coliformes: < 1,1 NMP en 100 ml</p>
         <div class="cursiva">Escherichia coli: <span>ausencia en 100 ml<span></div>
         <div class="cursiva">Pseudomona aeruginosa: <span>ausencia en 100 ml<span></div>
       </div>
