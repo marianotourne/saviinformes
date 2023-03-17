@@ -70,7 +70,7 @@ form h2 {
   font-size: var(--font-lg);
   font-weight: bold;
   background-color: var(--secondary-color);
-  padding: 6px 1px;
+  padding: 6px;
 }
 
 form input {
@@ -135,13 +135,15 @@ form .form-conclusiones {
   margin-top: 20px;
   font-size: var(--font-md);
 }
-form .form-resultados div {
+form .form-resultados div,
+form .form-conclusiones div {
   margin-bottom: 12px;
   border-bottom: 1px solid #808080;
   padding: 12px 0;
 }
 
-form .form-resultados div p {
+form .form-resultados div p,
+form .form-conclusiones div p {
   font-weight: bold;
   padding-bottom: 14px;
   font-size: var(--font-md);
@@ -178,6 +180,11 @@ form .form-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: scale(1);
+}
+
+.btn-send:hover {
+  transform: scale(1.1);
 }
 
 /* Informe */

@@ -14,6 +14,8 @@ const btnEnviar = document.getElementById("btnEnviar");
 const option11 = document.getElementById("option-1-1");
 const fechaImpresionInforme = document.getElementById("fechaImpresionInforme");
 const impresionConclusion = document.getElementById("impresionConclusion");
+const impresionResponsable = document.getElementById("impresionResponsable");
+
 const recuentosOption = Array.apply(
   null,
   document.getElementsByName("recuentosOption")
@@ -42,6 +44,11 @@ const pseudomonaOption = Array.apply(
 const resultadoOption = Array.apply(
   null,
   document.getElementsByName("resultadoOption")
+);
+
+const personaResponsable = Array.apply(
+  null,
+  document.getElementsByName("personaResponsable")
 );
 
 agua.onclick = toggleOptions;
@@ -140,6 +147,8 @@ function enviarConclusiones() {
   imprimirFechaConclusiones(informe);
   let resultado = getResultadoOption();
   imprimirConclusiones(resultado);
+  let personaResponsable = getPersonaResponsableOption();
+  imprimirResponsable(personaResponsable);
 }
 
 function imprimirEncabezado(
@@ -258,6 +267,24 @@ function imprimirFechaConclusiones(fecha) {
   `;
 }
 
+function imprimirResponsable(dato) {
+  if (dato == "persona1") {
+    fechaImpresionInforme.innerHTML = `
+      <p>
+        NOTA: El laboratorio procesa la muestra remitida pero no se hace
+        responsable de su identificación. La muestra fue tomada por persona
+        exenta al laboratorio.
+      </p>
+    `;
+  } else {
+    fechaImpresionInforme.innerHTML = `
+      <p>
+        NOTA: La muestra fue tomada por personal del laboratorio.
+      </p>
+    `;
+  }
+}
+
 function imprimirConclusiones(dato) {
   if (dato == "Deficiente") {
     impresionConclusion.innerHTML = `
@@ -324,6 +351,11 @@ function getPseudomonaOption() {
 
 function getResultadoOption() {
   let itemSelected = resultadoOption.find((item) => item.checked);
+  return itemSelected.value;
+}
+
+function getPersonaResponsableOption() {
+  let itemSelected = personaResponsable.find((item) => item.checked);
   return itemSelected.value;
 }
 

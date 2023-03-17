@@ -227,6 +227,7 @@
       <div class="form-conclusiones">
         <h2>Conclusiones</h2>
         <div class="form-resultados-item">
+          <p for="resultadoOption">Resultado</p>
           <input
             type="radio"
             name="resultadoOption"
@@ -249,6 +250,23 @@
           />
           <label for="optionNoPotable">No potable</label>
         </div>
+        <div class="form-resultados-item">
+          <p for="personaResponsable">Persona responsable de toma de muestra</p>
+          <input
+            type="radio"
+            name="personaResponsable"
+            value="persona1"
+            id="persona1"
+          />
+          <label for="persona1">Ajeno al laboratorio</label>
+          <input
+            type="radio"
+            name="personaResponsable"
+            value="persona2"
+            id="persona2"
+          />
+          <label for="persona2">Personal del laboratorio</label>
+        </div>
         <div>
           <label for="fechaInforme">Fecha de informe</label>
           <input type="date" name="fechaInforme" id="fechaInforme" />
@@ -256,7 +274,6 @@
       </div>
 
       <div class="form-buttons">
-        <!-- cambiar a type="submit" -->
         <button type="button" class="btn-send" id="btnEnviar">Enviar</button>
       </div>
     </form>
@@ -294,11 +311,7 @@
         <div id="impresionConclusion"></div>
       </section>
       <section class="informePie">
-        <p>
-          NOTA: El laboratorio procesa la muestra remitida pero no se hace
-          responsable de su identificación. La muestra fue tomada por persona
-          exenta al laboratorio.
-        </p>
+        <div id="impresionResponsable"></div>
         <div class="informePieFirma">
           <div id="fechaImpresionInforme"></div>
           <div>
