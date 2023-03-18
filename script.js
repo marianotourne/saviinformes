@@ -269,7 +269,7 @@ function imprimirFechaConclusiones(fecha) {
 
 function imprimirResponsable(dato) {
   if (dato == "persona1") {
-    fechaImpresionInforme.innerHTML = `
+    impresionResponsable.innerHTML = `
       <p>
         NOTA: El laboratorio procesa la muestra remitida pero no se hace
         responsable de su identificación. La muestra fue tomada por persona
@@ -277,7 +277,7 @@ function imprimirResponsable(dato) {
       </p>
     `;
   } else {
-    fechaImpresionInforme.innerHTML = `
+    impresionResponsable.innerHTML = `
       <p>
         NOTA: La muestra fue tomada por personal del laboratorio.
       </p>
